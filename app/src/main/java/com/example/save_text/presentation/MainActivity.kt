@@ -15,17 +15,18 @@ import com.example.domain.useCase.GetUserNameUseCase
 import com.example.domain.useCase.SaveUserNameUseCase
 import com.example.storage.UserStorage
 import com.example.storage.sharedPrefs.SharedPrefUserStorage
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class MainActivity : AppCompatActivity() {
 
 
 
-    private lateinit var vm: MainViewModel
+    private val vm: MainViewModel by viewModel<MainViewModel> ()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        vm = ViewModelProvider(this,MainViewModelFactory(this)).get(MainViewModel::class.java)
+
 
         val dataTextView = findViewById<TextView>(R.id.dataTextView)
         val dataEditView = findViewById<EditText>(R.id.dataEditText)
